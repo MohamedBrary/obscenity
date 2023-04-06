@@ -53,6 +53,7 @@ The following methods are available to use with Obscenity:
 - :default        : Uses the :garbled method
 - :garbled        : Replaces profane words with $@!#%
 - :stars          : Replaces profane words with '*' up to the word's length
+- :hollow         : Replaces all letters with '*' except the first and last ones
 - :vowels         : Replaces the vowels in the profane word with '*'
 - :nonconsonants  : Replaces non consonants with '*'
 - "custom string" : Replaces the profane word with the custom string

@@ -143,6 +143,7 @@ class TestBase < Test::Unit::TestCase
         }
         should "sanitize and return a clean text based on the default list" do
           assert_equal "Yo ********, sup", Obscenity::Base.replacement(:stars).sanitize('Yo assclown, sup')
+          assert_equal "Yo a******n, sup", Obscenity::Base.replacement(:hollow).sanitize('Yo assclown, sup')
           assert_equal "Yo $@!#%, sup", Obscenity::Base.replacement(:garbled).sanitize('Yo assclown, sup')
           assert_equal "Yo *sscl*wn, sup", Obscenity::Base.replacement(:vowels).sanitize('Yo assclown, sup')
           assert_equal "Oh, *h*t!", Obscenity::Base.replacement(:nonconsonants).sanitize('Oh, 5hit!')
@@ -154,6 +155,7 @@ class TestBase < Test::Unit::TestCase
         setup { Obscenity::Base.blacklist = ['ass', 'word', 'w0rd'] }
         should "sanitize and return a clean text based on a custom list" do
           assert_equal "Yo ****, sup", Obscenity::Base.replacement(:stars).sanitize('Yo word, sup')
+          assert_equal "Yo w**d, sup", Obscenity::Base.replacement(:hollow).sanitize('Yo word, sup')
           assert_equal "Yo $@!#%, sup", Obscenity::Base.replacement(:garbled).sanitize('Yo word, sup')
           assert_equal "Yo w*rd, sup", Obscenity::Base.replacement(:vowels).sanitize('Yo word, sup')
           assert_equal "Yo w*rd, sup", Obscenity::Base.replacement(:nonconsonants).sanitize('Yo w0rd, sup')
@@ -170,6 +172,7 @@ class TestBase < Test::Unit::TestCase
         }
         should "sanitize and return a clean text based on the default blacklist and custom whitelist" do
           assert_equal "Yo ********, sup", Obscenity::Base.replacement(:stars).sanitize('Yo assclown, sup')
+          assert_equal "Yo a******n, sup", Obscenity::Base.replacement(:hollow).sanitize('Yo assclown, sup')
           assert_equal "Yo $@!#%, sup", Obscenity::Base.replacement(:garbled).sanitize('Yo assclown, sup')
           assert_equal "Yo *sscl*wn, sup", Obscenity::Base.replacement(:vowels).sanitize('Yo assclown, sup')
           assert_equal "What an *r**", Obscenity::Base.replacement(:nonconsonants).sanitize('What an ar5e')
@@ -184,6 +187,7 @@ class TestBase < Test::Unit::TestCase
         }
         should "validate the profanity of a word based on the custom list" do
           assert_equal "Yo *****, sup", Obscenity::Base.replacement(:stars).sanitize('Yo clown, sup')
+          assert_equal "Yo c***n, sup", Obscenity::Base.replacement(:hollow).sanitize('Yo clown, sup')
           assert_equal "Yo $@!#%, sup", Obscenity::Base.replacement(:garbled).sanitize('Yo clown, sup')
           assert_equal "Yo cl*wn, sup", Obscenity::Base.replacement(:vowels).sanitize('Yo clown, sup')
           assert_equal "Yo cl*wn, sup", Obscenity::Base.replacement(:nonconsonants).sanitize('Yo clown, sup')
