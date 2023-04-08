@@ -90,7 +90,7 @@ Obscenity.sanitize("text with shit")
 => "text with $@!#%"
 ```
     
-`Obscenity.replacement(style).sanitize(text)` allows you to pass the replacement method to be used when sanitizing the given content. Available replacement values are `:default`, `:garbled`, `:stars`, `:vowels`, and a custom string.
+`Obscenity.replacement(style).sanitize(text)` allows you to pass the replacement method to be used when sanitizing the given content. Available replacement values are `:default`, `:garbled`, `:stars`, `:hollow`, `:vowels`, and a custom string.
 
 ```ruby
 Obscenity.replacement(:default).sanitize("text with shit")
@@ -101,6 +101,9 @@ Obscenity.replacement(:garbled).sanitize("text with shit")
 
 Obscenity.replacement(:stars).sanitize("text with shit")
 => "text with ****"
+
+Obscenity.replacement(:hollow).sanitize("text with shit")
+=> "text with s**t"
 
 Obscenity.replacement(:vowels).sanitize("text with shit")
 => "text with sh*t"
