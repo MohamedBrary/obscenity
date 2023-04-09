@@ -99,6 +99,8 @@ class TestBase < Test::Unit::TestCase
         }
         should "sanitize and return a clean text based on the default list" do
           assert_equal "Yo $@!#%, sup", Obscenity::Base.sanitize('Yo assclown, sup')
+          # should sanitize multi-words profanity too
+          assert_equal "Yo a*******n, sup", Obscenity::Base.replacement(:stars).sanitize('Yo ass clown, sup')
           assert_equal "Hello world", Obscenity::Base.sanitize('Hello world')
         end
       end
